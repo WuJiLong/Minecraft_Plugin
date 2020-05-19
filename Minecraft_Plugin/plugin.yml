@@ -6,6 +6,6 @@ commands:
     getitem:
         description: "取得自定義道具"
 permissions:
-    Wu.item.cmmand.getitem:
+    Wu.item.command.getitem:
         description: "使用命令getitem權限"
         default: OP
