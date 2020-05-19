@@ -2,3 +2,10 @@ name: Minecraft_Plugin
 main: wuchilong.mc.plugin.main
 version: 0.1
 api-version: 1.15
+commands:
+    getitem:
+        description: "取得自定義道具"
+permissions:
+    Wu.item.cmmand.getitem:
+        description: "使用命令getitem權限"
+        default: OP
