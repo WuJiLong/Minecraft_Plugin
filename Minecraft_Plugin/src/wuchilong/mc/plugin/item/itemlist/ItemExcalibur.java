@@ -6,14 +6,16 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.EnchantmentWrapper;
 import org.bukkit.event.Listener;
+import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import wuchilong.mc.plugin.main;
 import wuchilong.mc.plugin.item.CustomItem;
 
 public class ItemExcalibur extends CustomItem implements Listener{
 
 	public ItemExcalibur() {
-		super(Material.GOLDEN_SWORD,(short) 1, true);
+		super(Material.GOLDEN_SWORD,(short) 1);
 		ItemMeta item = this.getItemMeta();
 		item.setDisplayName(ChatColor.GOLD + "斷鋼聖劍(Excalibur)");
 		item.setLore(Arrays.asList(new String[] {
@@ -25,5 +27,12 @@ public class ItemExcalibur extends CustomItem implements Listener{
 		this.addUnsafeEnchantment(new EnchantmentWrapper("smite"), 1000);//17
 		this.addUnsafeEnchantment(new EnchantmentWrapper("bane_of_arthropods"), 1000);//18
 		this.addUnsafeEnchantment(new EnchantmentWrapper("looting"), 5);//21
+	}
+	@Override
+	public void insterRecipe(main plugin) {//加入自定義合成表
+		@SuppressWarnings("deprecation")
+		ShapedRecipe make = new ShapedRecipe(this).shape(" ! "," ! "," * ")
+				.setIngredient('!',Material.GOLD_BLOCK).setIngredient('*',Material.GOLD_INGOT);
+		plugin.getServer().addRecipe(make);
 	}
 }

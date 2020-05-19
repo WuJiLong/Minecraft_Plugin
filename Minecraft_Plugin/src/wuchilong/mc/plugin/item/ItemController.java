@@ -30,9 +30,15 @@ public class ItemController implements CommandExecutor, TabCompleter{
 		plugin.getCommand("getitem").setExecutor(this);
 		
 		//addItemlist
-		itemList.put("Excalibur", new ItemExcalibur());
+		ItemExcalibur excalibur=new ItemExcalibur();
+		plugin.getServer().getPluginManager().registerEvents(excalibur, plugin);//事件
+		itemList.put("Excalibur", excalibur);
 		
 		
+		//登入合成表
+		for(CustomItem i:itemList.values()) {
+			i.insterRecipe(plugin);	
+		}
 	}
 	public void onDisable() {
 		
