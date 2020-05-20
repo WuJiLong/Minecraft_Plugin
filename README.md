@@ -4,3 +4,4 @@ Minecraft版本：1.15
 
 道具列表  
 Excalibur 斷剛聖劍  
+Strengthengold_ingot 強化金錠  

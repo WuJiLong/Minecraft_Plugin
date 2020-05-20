@@ -30,14 +30,14 @@ public class ItemController implements CommandExecutor, TabCompleter{
 		plugin.getCommand("getitem").setExecutor(this);
 		
 		//addItemlist
-		ItemExcalibur excalibur=new ItemExcalibur();
-		plugin.getServer().getPluginManager().registerEvents(excalibur, plugin);//事件
-		itemList.put("Excalibur", excalibur);
+		itemList.put("Excalibur", new ItemExcalibur());//斷鋼聖劍
+		itemList.put("Strengthengold_ingot", new ItemStrengthengold_ingot());//強化金錠
 		
 		
 		//登入合成表
 		for(CustomItem i:itemList.values()) {
-			i.insterRecipe(plugin);	
+			i.insterRecipe(plugin,itemList);
+			if(i.needListen()) plugin.getServer().getPluginManager().registerEvents(i, plugin);//事件
 		}
 	}
 	public void onDisable() {
@@ -59,8 +59,6 @@ public class ItemController implements CommandExecutor, TabCompleter{
 							if(s.toLowerCase().startsWith(args[0].toLowerCase())) endlist.add(s);
 						}
 					}
-				}else {
-					
 				}
 				return endlist; 
 			}
