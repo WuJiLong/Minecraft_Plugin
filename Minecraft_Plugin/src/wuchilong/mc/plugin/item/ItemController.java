@@ -36,6 +36,7 @@ public class ItemController implements CommandExecutor, TabCompleter{
 		itemList.put("Strengthengold_block", new ItemStrengthengold_block());//強化金磚
 		itemList.put("Gilded_diamond", new ItemGilded_diamond());//鍍金鑽
 		itemList.put("Gildedgrip", new ItemGildedgrip());//鍍金握把
+		itemList.put("God_of_pickaxe", new ItemGod_of_pickaxe());//斷剛神稿
 		
 		//登入合成表
 		for(CustomItem i:itemList.values()) {

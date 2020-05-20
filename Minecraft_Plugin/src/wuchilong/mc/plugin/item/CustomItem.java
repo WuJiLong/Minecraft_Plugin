@@ -18,14 +18,15 @@ import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.RecipeChoice;
 import org.bukkit.inventory.ShapedRecipe;
+import org.bukkit.inventory.ShapelessRecipe;
 
 import wuchilong.mc.plugin.main;
 
 public class CustomItem extends ItemStack implements Listener{
-	protected boolean isRecipe;//是否有合成表
-	//protected boolean customItemRecipe;//是否使用自定義道具合成
-	protected boolean hasSkill;//是否有技能
-	protected boolean isBlock;
+	protected boolean isRecipe=false;//是否有合成表
+	protected boolean islessRecipe=false;
+	protected boolean hasSkill=false;//是否有技能
+	protected boolean isBlock=false;
 	protected ItemStack[] recipe= {null,null,null,null,null,null,null,null,null};//
 	public String itemname;
 	public CustomItem(Material type, int amount,String name) {
@@ -35,21 +36,38 @@ public class CustomItem extends ItemStack implements Listener{
 	
 	public void insterRecipe(main plugin,HashMap<String, CustomItem> itemList) {//加入自定義合成表
 		if(!isRecipe) return;
+		
 		loadRecipe(itemList);
-		char [] index= {'!','@','*','#','$','%','^','&','~'};
-		ShapedRecipe make = new ShapedRecipe(new  NamespacedKey(plugin,itemname) ,this).shape("!@*","#$%","^&~");
-		for(int i=0;i<9;i++) {
-			if(recipe[i]!=null) {
-				if(recipe[i].hasItemMeta()) {
-					@SuppressWarnings("deprecation")
-					RecipeChoice custom1Choice = new RecipeChoice.ExactChoice(recipe[i]); //custom ingredient
-					make=make.setIngredient(index[i],custom1Choice);
-				}else{
-					make=make.setIngredient(index[i],recipe[i].getData());
+		if(!islessRecipe) {
+			char [] index= {'!','@','*','#','$','%','^','&','~'};
+			ShapedRecipe make = new ShapedRecipe(new  NamespacedKey(plugin,itemname) ,this).shape("!@*","#$%","^&~");
+			for(int i=0;i<9;i++) {
+				if(recipe[i]!=null) {
+					if(recipe[i].hasItemMeta()) {
+						@SuppressWarnings("deprecation")
+						RecipeChoice custom1Choice = new RecipeChoice.ExactChoice(recipe[i]); //custom ingredient
+						make=make.setIngredient(index[i],custom1Choice);
+					}else{
+						make=make.setIngredient(index[i],recipe[i].getData());
+					}
 				}
 			}
+			plugin.getServer().addRecipe(make);
+		}else {
+			ShapelessRecipe make = new ShapelessRecipe(new  NamespacedKey(plugin,itemname),this);
+			for(ItemStack i:recipe) {
+				if(i!=null) {
+					if(i.hasItemMeta()) {
+						@SuppressWarnings("deprecation")
+						RecipeChoice custom1Choice = new RecipeChoice.ExactChoice(i); //custom ingredient
+						make=make.addIngredient(custom1Choice);
+					}else{
+						make=make.addIngredient(i.getData());
+					}
+				}
+			}
+			plugin.getServer().addRecipe(make);
 		}
-		plugin.getServer().addRecipe(make);
 	}
 	
 	public void loadRecipe(HashMap<String, CustomItem> itemList) {
