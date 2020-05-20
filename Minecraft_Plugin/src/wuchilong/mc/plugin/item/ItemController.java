@@ -14,7 +14,8 @@ import org.bukkit.inventory.ItemStack;
 import com.google.common.collect.Lists;
 
 import wuchilong.mc.plugin.main;
-import wuchilong.mc.plugin.item.itemlist.*;
+import wuchilong.mc.plugin.item.itemlist.Excalibur.*;//斷鋼聖劍系列
+
 
 public class ItemController implements CommandExecutor, TabCompleter{
 	main plugin;
@@ -32,7 +33,9 @@ public class ItemController implements CommandExecutor, TabCompleter{
 		//addItemlist
 		itemList.put("Excalibur", new ItemExcalibur());//斷鋼聖劍
 		itemList.put("Strengthengold_ingot", new ItemStrengthengold_ingot());//強化金錠
-		
+		itemList.put("Strengthengold_block", new ItemStrengthengold_block());//強化金磚
+		itemList.put("Gilded_diamond", new ItemGilded_diamond());//鍍金鑽
+		itemList.put("Gildedgrip", new ItemGildedgrip());//鍍金握把
 		
 		//登入合成表
 		for(CustomItem i:itemList.values()) {
