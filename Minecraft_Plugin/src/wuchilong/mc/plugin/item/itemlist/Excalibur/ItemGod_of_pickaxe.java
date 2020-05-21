@@ -216,12 +216,16 @@ public class ItemGod_of_pickaxe extends CustomItem{
 	    if(e.getHand()!=null)
 	    	if(e.getHand().equals(EquipmentSlot.OFF_HAND)) return;
 	    if(e.getAction() != Action.LEFT_CLICK_BLOCK) return;
-	    if(p.getInventory().getItemInMainHand()==null) return;
-	    if(p.getInventory().getItemInMainHand().getItemMeta()==null) return;
-	    if(p.getInventory().getItemInMainHand().getItemMeta().getLore()==null) return;
-	    boolean Mod1=(p.getInventory().getItemInMainHand().getItemMeta().getLore().equals(Mod1_ItemMeta.getLore()));
-	    boolean Mod2=(p.getInventory().getItemInMainHand().getItemMeta().getLore().equals(Mod2_ItemMeta.getLore()));
-	    boolean Mod3=(p.getInventory().getItemInMainHand().getItemMeta().getLore().equals(Mod3_ItemMeta.getLore()));
+	    boolean Mod1=false;
+		boolean Mod2=false;
+		boolean Mod3=false;
+	    try {
+	    	Mod1=(p.getInventory().getItemInMainHand().getItemMeta().getLore().equals(Mod1_ItemMeta.getLore()));
+	    	Mod2=(p.getInventory().getItemInMainHand().getItemMeta().getLore().equals(Mod2_ItemMeta.getLore()));
+	    	Mod3=(p.getInventory().getItemInMainHand().getItemMeta().getLore().equals(Mod3_ItemMeta.getLore()));
+	    }catch(Exception ex){
+	    	return;
+	    }
 	    if(Mod1 || Mod2 || Mod3) {
 	    	blockface.put(p, e.getBlockFace());
 	    }
