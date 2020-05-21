@@ -23,6 +23,7 @@ public class ItemGod_of_pickaxe extends CustomItem{
 	ItemMeta Mod1_ItemMeta;
 	ItemMeta Mod2_ItemMeta;
 	ItemMeta Mod3_ItemMeta;
+	ItemStack tol=new ItemStack(Material.DIAMOND_PICKAXE);
 	public HashMap<Player, BlockFace> blockface=new HashMap<Player, BlockFace>();
 	public ItemGod_of_pickaxe() {
 		super(Material.GOLDEN_PICKAXE,(short) 1,"god_of_pickaxe");
@@ -122,8 +123,7 @@ public class ItemGod_of_pickaxe extends CustomItem{
 	    }
 	    if(Mod1 || Mod2 || Mod3) {
 	    	e.setCancelled(true);
-	    	ItemStack tol=new ItemStack(Material.DIAMOND_PICKAXE);
-	    	tol.addUnsafeEnchantment(new EnchantmentWrapper("silk_touch"), 5);
+	    	//tol.addUnsafeEnchantment(new EnchantmentWrapper("silk_touch"), 5);
 	    	Block b=e.getBlock();
 	    	int x=(int) b.getLocation().getX();
 	    	int y=(int) b.getLocation().getY();
