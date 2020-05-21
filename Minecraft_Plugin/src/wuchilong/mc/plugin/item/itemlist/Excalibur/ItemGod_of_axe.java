@@ -102,7 +102,7 @@ public class ItemGod_of_axe extends CustomItem{
 	    	Location rootLoc=b.getLocation();
 	    	
 	    	List<Location> round1=new ArrayList<Location>();
-	    	List<Location> alldir=new ArrayList<Location>();
+	    	//List<Location> alldir=new ArrayList<Location>();
 	    	//alldir.add(b.getLocation());
 	    	round1.add(rootLoc);
 	    	List<Location> next_round=new ArrayList<Location>();
@@ -112,7 +112,7 @@ public class ItemGod_of_axe extends CustomItem{
 	    			for(int i=0;i<18;i++) {
 	    				Location n=loc.clone().add(i%3-1,(i/9),(i%9)/3-1);
 	    				if(java.lang.Math.abs(rootLoc.getBlockX()-n.getBlockX())<=maxwidth && java.lang.Math.abs(rootLoc.getBlockZ()-n.getBlockZ())<=maxwidth) {
-		    				if(alldir.indexOf(n)==-1 && next_round.indexOf(n)==-1 && round1.indexOf(n)==-1) {
+		    				if(/*alldir.indexOf(n)==-1 &&*/ next_round.indexOf(n)==-1 && round1.indexOf(n)==-1) {
 		    					if(n.getBlock().getState().getType().equals(dirbolck)) {
 		    						next_round.add(n);
 		    					}
@@ -125,7 +125,7 @@ public class ItemGod_of_axe extends CustomItem{
 	    			Block block=loc.getBlock();
 		    		
 		    		block.breakNaturally(tol);
-	    			alldir.add(loc);
+	    			//alldir.add(loc);
 	    		}
 	    		List<Location> tmp=round1;
 	    		round1=next_round;
