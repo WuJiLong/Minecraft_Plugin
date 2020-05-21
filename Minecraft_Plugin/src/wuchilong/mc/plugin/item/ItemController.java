@@ -14,6 +14,7 @@ import org.bukkit.inventory.ItemStack;
 import com.google.common.collect.Lists;
 
 import wuchilong.mc.plugin.main;
+import wuchilong.mc.plugin.item.itemlist.ItemIPad;
 import wuchilong.mc.plugin.item.itemlist.Excalibur.*;//斷鋼聖劍系列
 
 
@@ -38,6 +39,8 @@ public class ItemController implements CommandExecutor, TabCompleter{
 		itemList.put("Gildedgrip", new ItemGildedgrip());//鍍金握把
 		itemList.put("God_of_pickaxe", new ItemGod_of_pickaxe());//斷剛神稿
 		itemList.put("God_of_axe", new ItemGod_of_axe());//斷剛神斧
+		
+		itemList.put("I_pad", new ItemIPad());//I pad
 		
 		//登入合成表
 		for(CustomItem i:itemList.values()) {

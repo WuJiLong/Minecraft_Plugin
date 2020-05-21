@@ -1,6 +1,6 @@
 name: Minecraft_Plugin
 main: wuchilong.mc.plugin.main
-version: 0.1
+version: 0.2
 api-version: 1.15
 commands:
     getitem:

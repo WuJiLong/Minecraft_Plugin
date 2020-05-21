@@ -8,8 +8,10 @@ import wuchilong.mc.plugin.OtherListener;
 public class main extends JavaPlugin{
 	ItemController itemcontroller=new ItemController(this);
 	OtherListener otherListener=new OtherListener(this);
+	public static main PLUGIN;
 	public void onEnable() {
 		getLogger().info("Loading the plugin...");
+		PLUGIN=this;
 		itemcontroller.onEnable();
 		
 		getServer().getPluginManager().registerEvents(otherListener, this);
