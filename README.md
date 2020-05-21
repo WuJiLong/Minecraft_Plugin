@@ -9,4 +9,5 @@ Strengthengold_block 強化金磚
 Gilded_diamond 鍍金鑽  
 Gildedgrip 神器握把  
 God_of_pickaxe 斷剛神稿  
+God_of_axe 斷剛神斧  
 

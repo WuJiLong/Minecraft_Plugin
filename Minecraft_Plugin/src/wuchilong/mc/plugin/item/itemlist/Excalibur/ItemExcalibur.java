@@ -30,7 +30,7 @@ public class ItemExcalibur extends CustomItem{
 		this.addUnsafeEnchantment(new EnchantmentWrapper("smite"), 1000);//17
 		this.addUnsafeEnchantment(new EnchantmentWrapper("bane_of_arthropods"), 1000);//18
 		this.addUnsafeEnchantment(new EnchantmentWrapper("looting"), 5);//21
-		
+		this.addUnsafeEnchantment(new EnchantmentWrapper("sweeping"), 100);//22
 		isRecipe=true;
 		hasSkill=false;
 		isBlock=false;
