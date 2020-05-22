@@ -3,7 +3,6 @@ package wuchilong.mc.plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import wuchilong.mc.plugin.item.ItemController;
-import wuchilong.mc.plugin.OtherListener;
 
 public class main extends JavaPlugin{
 	ItemController itemcontroller=new ItemController(this);

@@ -42,11 +42,11 @@ public class ItemGod_of_axe extends CustomItem{
 	}
 	@Override
 	public void loadRecipe(HashMap<String, CustomItem> itemList) {
-		recipe[0]= itemList.get("Gilded_diamond");
-		recipe[1]= itemList.get("Gilded_diamond");
-		recipe[3]= itemList.get("Gilded_diamond");
-		recipe[4]= itemList.get("Gildedgrip");
-		recipe[7]= itemList.get("Gildedgrip");
+		recipe[0]= itemList.get("excalibur_Gilded_diamond");
+		recipe[1]= itemList.get("excalibur_Gilded_diamond");
+		recipe[3]= itemList.get("excalibur_Gilded_diamond");
+		recipe[4]= itemList.get("excalibur_Gildedgrip");
+		recipe[7]= itemList.get("excalibur_Gildedgrip");
 	}
 	
 	

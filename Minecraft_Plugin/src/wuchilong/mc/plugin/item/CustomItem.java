@@ -23,11 +23,11 @@ import org.bukkit.inventory.ShapelessRecipe;
 import wuchilong.mc.plugin.main;
 
 public class CustomItem extends ItemStack implements Listener{
-	protected boolean isRecipe=false;//是否有合成表
+	public boolean isRecipe=false;//是否有合成表
 	protected boolean islessRecipe=false;
 	protected boolean hasSkill=false;//是否有技能
 	protected boolean isBlock=false;
-	protected ItemStack[] recipe= {null,null,null,null,null,null,null,null,null};//
+	public ItemStack[] recipe= {null,null,null,null,null,null,null,null,null};//
 	public String itemname;
 	public CustomItem(Material type, int amount,String name) {
 		super(type,(short) amount);

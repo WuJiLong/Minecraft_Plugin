@@ -6,6 +6,10 @@ Minecraft版本：1.15
 getitem 取得自定義道具  
   
 道具列表:  
+InfiniteFireworks 火箭推進器  
+Hardener 固化劑  
+Elytra 強化鞘翅  
+  
 Excalibur 斷剛聖劍  
 Strengthengold_ingot 強化金錠  
 Strengthengold_block 強化金磚  
@@ -14,5 +18,5 @@ Gildedgrip 神器握把
 God_of_pickaxe 斷剛神稿  
 God_of_axe 斷剛神斧  
 
-I_pad 平板電腦  
+I_pad 平板電腦（功能未實做）  
 

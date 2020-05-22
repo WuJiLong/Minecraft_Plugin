@@ -30,7 +30,7 @@ public class ItemGildedgrip extends CustomItem{
 	
 	@Override
 	public void loadRecipe(HashMap<String, CustomItem> itemList) {
-		ItemStack I=itemList.get("Strengthengold_block");
+		ItemStack I=itemList.get("excalibur_Strengthengold_block");
 		recipe[0]= I;
 		recipe[1]= I;
 		recipe[2]= I;

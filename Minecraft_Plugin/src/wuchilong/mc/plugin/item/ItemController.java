@@ -15,6 +15,7 @@ import com.google.common.collect.Lists;
 
 import wuchilong.mc.plugin.main;
 import wuchilong.mc.plugin.item.itemlist.ItemIPad;
+import wuchilong.mc.plugin.item.itemlist.Adventure.*;
 import wuchilong.mc.plugin.item.itemlist.Excalibur.*;//斷鋼聖劍系列
 
 
@@ -32,15 +33,21 @@ public class ItemController implements CommandExecutor, TabCompleter{
 		plugin.getCommand("getitem").setExecutor(this);
 		
 		//addItemlist
-		itemList.put("Excalibur", new ItemExcalibur());//斷鋼聖劍
-		itemList.put("Strengthengold_ingot", new ItemStrengthengold_ingot());//強化金錠
-		itemList.put("Strengthengold_block", new ItemStrengthengold_block());//強化金磚
-		itemList.put("Gilded_diamond", new ItemGilded_diamond());//鍍金鑽
-		itemList.put("Gildedgrip", new ItemGildedgrip());//鍍金握把
-		itemList.put("God_of_pickaxe", new ItemGod_of_pickaxe());//斷剛神稿
-		itemList.put("God_of_axe", new ItemGod_of_axe());//斷剛神斧
+		itemList.put("other-I_pad", new ItemIPad());//I pad
 		
-		itemList.put("I_pad", new ItemIPad());//I pad
+		itemList.put("adventure_InfiniteFireworks", new ItemInfiniteFireworks());//
+		itemList.put("adventure_Hardener", new ItemHardener());//
+		itemList.put("adventure_Elytra", new ItemElytra());//
+		
+		itemList.put("excalibur_Excalibur", new ItemExcalibur());//斷鋼聖劍
+		itemList.put("excalibur_Strengthengold_ingot", new ItemStrengthengold_ingot());//強化金錠
+		itemList.put("excalibur_Strengthengold_block", new ItemStrengthengold_block());//強化金磚
+		itemList.put("excalibur_Gilded_diamond", new ItemGilded_diamond());//鍍金鑽
+		itemList.put("excalibur_Gildedgrip", new ItemGildedgrip());//鍍金握把
+		itemList.put("excalibur_God_of_pickaxe", new ItemGod_of_pickaxe());//斷剛神稿
+		itemList.put("excalibur_God_of_axe", new ItemGod_of_axe());//斷剛神斧
+		
+	
 		
 		//登入合成表
 		for(CustomItem i:itemList.values()) {

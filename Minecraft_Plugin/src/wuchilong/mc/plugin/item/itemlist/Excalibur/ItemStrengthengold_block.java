@@ -28,7 +28,7 @@ public class ItemStrengthengold_block extends CustomItem{
 	}
 	@Override
 	public void loadRecipe(HashMap<String, CustomItem> itemList) {
-		ItemStack I=itemList.get("Strengthengold_ingot");
+		ItemStack I=itemList.get("excalibur_Strengthengold_ingot");
 		recipe[0]= I;
 		recipe[1]= I;
 		recipe[2]= I;

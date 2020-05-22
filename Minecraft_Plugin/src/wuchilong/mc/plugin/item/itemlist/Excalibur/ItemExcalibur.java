@@ -37,9 +37,9 @@ public class ItemExcalibur extends CustomItem{
 	}
 	@Override
 	public void loadRecipe(HashMap<String, CustomItem> itemList) {
-		recipe[1]= itemList.get("Gilded_diamond");
-		recipe[4]= itemList.get("Gilded_diamond");
-		recipe[7]= itemList.get("Gildedgrip");
+		recipe[1]= itemList.get("excalibur_Gilded_diamond");
+		recipe[4]= itemList.get("excalibur_Gilded_diamond");
+		recipe[7]= itemList.get("excalibur_Gildedgrip");
 	}
 	/*
 	@EventHandler
