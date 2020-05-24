@@ -20,17 +20,13 @@ import wuchilong.mc.plugin.item.itemlist.Excalibur.*;//斷鋼聖劍系列
 
 
 public class ItemController implements CommandExecutor, TabCompleter{
-	main plugin;
 	public HashMap<String, CustomItem> itemList=new HashMap<String, CustomItem>();
 	
-	public ItemController(main plugin) {
-		this.plugin=plugin;
-	}
 	
 	public void onEnable() {
-		plugin.getLogger().info("Loading itemList");
+		main.PLUGIN.getLogger().info("Loading itemList");
 		//add command
-		plugin.getCommand("getitem").setExecutor(this);
+		main.PLUGIN.getCommand("getitem").setExecutor(this);
 		
 		//addItemlist
 		itemList.put("other-I_pad", new ItemIPad());//I pad
@@ -51,8 +47,8 @@ public class ItemController implements CommandExecutor, TabCompleter{
 		
 		//登入合成表
 		for(CustomItem i:itemList.values()) {
-			i.insterRecipe(plugin,itemList);
-			if(i.needListen()) plugin.getServer().getPluginManager().registerEvents(i, plugin);//事件
+			i.insterRecipe(itemList);
+			if(i.needListen()) main.PLUGIN.getServer().getPluginManager().registerEvents(i, main.PLUGIN);//事件
 		}
 	}
 	public void onDisable() {

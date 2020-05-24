@@ -5,7 +5,17 @@ api-version: 1.15
 commands:
     getitem:
         description: "取得自定義道具"
+    openGUI:
+        description: "開啟GUI主畫面"
+    itemlist:
+        description: "開啟道具列表"
 permissions:
     Wu.item.command.getitem:
         description: "使用命令getitem權限"
         default: OP
+    Wu.GUI.command.openGUI:
+        description: "使用命令openGUI權限"
+        default: TRUE
+    Wu.GUI.command.itemlist:
+        description: "使用命令itemlist權限"
+        default: TRUE

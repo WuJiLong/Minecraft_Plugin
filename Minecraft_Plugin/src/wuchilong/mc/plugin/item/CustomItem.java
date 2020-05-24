@@ -34,13 +34,13 @@ public class CustomItem extends ItemStack implements Listener{
 		this.itemname=name;
 	}
 	
-	public void insterRecipe(main plugin,HashMap<String, CustomItem> itemList) {//加入自定義合成表
+	public void insterRecipe(HashMap<String, CustomItem> itemList) {//加入自定義合成表
 		if(!isRecipe) return;
 		
 		loadRecipe(itemList);
 		if(!islessRecipe) {
 			char [] index= {'!','@','*','#','$','%','^','&','~'};
-			ShapedRecipe make = new ShapedRecipe(new  NamespacedKey(plugin,itemname) ,this).shape("!@*","#$%","^&~");
+			ShapedRecipe make = new ShapedRecipe(new  NamespacedKey(main.PLUGIN,itemname) ,this).shape("!@*","#$%","^&~");
 			for(int i=0;i<9;i++) {
 				if(recipe[i]!=null) {
 					if(recipe[i].hasItemMeta()) {
@@ -52,9 +52,9 @@ public class CustomItem extends ItemStack implements Listener{
 					}
 				}
 			}
-			plugin.getServer().addRecipe(make);
+			main.PLUGIN.getServer().addRecipe(make);
 		}else {
-			ShapelessRecipe make = new ShapelessRecipe(new  NamespacedKey(plugin,itemname),this);
+			ShapelessRecipe make = new ShapelessRecipe(new  NamespacedKey(main.PLUGIN,itemname),this);
 			for(ItemStack i:recipe) {
 				if(i!=null) {
 					if(i.hasItemMeta()) {
@@ -66,7 +66,7 @@ public class CustomItem extends ItemStack implements Listener{
 					}
 				}
 			}
-			plugin.getServer().addRecipe(make);
+			main.PLUGIN.getServer().addRecipe(make);
 		}
 	}
 	

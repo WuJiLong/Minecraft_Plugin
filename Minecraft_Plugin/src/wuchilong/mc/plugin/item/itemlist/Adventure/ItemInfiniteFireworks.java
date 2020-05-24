@@ -10,6 +10,7 @@ import org.bukkit.enchantments.EnchantmentWrapper;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.block.BlockDispenseEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -46,6 +47,18 @@ public class ItemInfiniteFireworks extends CustomItem{
 					int nur=item.getAmount()+1;
 					usingitem.setAmount(nur);
 					return;
+			}
+	    }catch(Exception ex){}
+	}
+	
+	@EventHandler
+	public void dispense(BlockDispenseEvent e) {
+		
+		ItemStack usingitem=e.getItem();
+		try {
+			 if(usingitem.getItemMeta().equals(this.getItemMeta())){
+				if(e.getBlock().getState().getType().equals(Material.DISPENSER))
+					e.setCancelled(true);
 			}
 	    }catch(Exception ex){}
 	}
