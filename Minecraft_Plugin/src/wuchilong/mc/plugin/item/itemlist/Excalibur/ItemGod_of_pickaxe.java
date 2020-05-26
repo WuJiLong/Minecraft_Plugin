@@ -79,7 +79,7 @@ public class ItemGod_of_pickaxe extends CustomItem{
 	
 	@EventHandler
 	public void Switch_working_mode(PlayerInteractEvent e) {
-	    Player p = e.getPlayer();
+	    Player player = e.getPlayer();
 	    if(e.getHand()!=null)
 	    	if(e.getHand().equals(EquipmentSlot.OFF_HAND)) return;
 	    if(e.getAction() != Action.RIGHT_CLICK_BLOCK && e.getAction() != Action.RIGHT_CLICK_AIR) return;
@@ -87,24 +87,24 @@ public class ItemGod_of_pickaxe extends CustomItem{
 		boolean Mod2=false;
 		boolean Mod3=false;
 	    try {
-	    	Mod1=(p.getInventory().getItemInMainHand().getItemMeta().getLore().equals(Mod1_ItemMeta.getLore()));
-	    	Mod2=(p.getInventory().getItemInMainHand().getItemMeta().getLore().equals(Mod2_ItemMeta.getLore()));
-	    	Mod3=(p.getInventory().getItemInMainHand().getItemMeta().getLore().equals(Mod3_ItemMeta.getLore()));
+	    	Mod1=(player.getInventory().getItemInMainHand().getItemMeta().getLore().equals(Mod1_ItemMeta.getLore()));
+	    	Mod2=(player.getInventory().getItemInMainHand().getItemMeta().getLore().equals(Mod2_ItemMeta.getLore()));
+	    	Mod3=(player.getInventory().getItemInMainHand().getItemMeta().getLore().equals(Mod3_ItemMeta.getLore()));
 	    }catch(Exception ex){
 	    	return;
 	    }
 	    if(Mod1 || Mod2 || Mod3) {
 	    	if(Mod1) {
-	    		p.getInventory().getItemInMainHand().setItemMeta(Mod2_ItemMeta);
-	    		p.sendMessage(ChatColor.BLUE + "[斷鋼神稿]切換至功能:選擇性破壞(礦物)");
+	    		player.getInventory().getItemInMainHand().setItemMeta(Mod2_ItemMeta);
+	    		player.sendMessage(ChatColor.BLUE + "[斷鋼神稿]切換至功能:選擇性破壞(礦物)");
 	    	}else if(Mod2) {
-	    		p.getInventory().getItemInMainHand().setItemMeta(Mod3_ItemMeta);
-	    		p.sendMessage(ChatColor.BLUE + "[斷鋼神稿]切換至功能:全數破壞");
+	    		player.getInventory().getItemInMainHand().setItemMeta(Mod3_ItemMeta);
+	    		player.sendMessage(ChatColor.BLUE + "[斷鋼神稿]切換至功能:全數破壞");
 	    	}else { 
-	    		p.getInventory().getItemInMainHand().setItemMeta(Mod1_ItemMeta);
-	    		p.sendMessage(ChatColor.BLUE + "[斷鋼神稿]切換至功能:選擇性破壞(全)");
+	    		player.getInventory().getItemInMainHand().setItemMeta(Mod1_ItemMeta);
+	    		player.sendMessage(ChatColor.BLUE + "[斷鋼神稿]切換至功能:選擇性破壞(全)");
 	    	} 
-	    	p.getInventory().getItemInMainHand().addUnsafeEnchantment(new EnchantmentWrapper("efficiency"), 10000);//32
+	    	player.getInventory().getItemInMainHand().addUnsafeEnchantment(new EnchantmentWrapper("efficiency"), 10000);//32
 	    	e.setCancelled(true);
 	    }
 	}
@@ -216,7 +216,7 @@ public class ItemGod_of_pickaxe extends CustomItem{
 	
 	@EventHandler
 	public void dig_block(PlayerInteractEvent e) {
-		Player p = e.getPlayer();
+		Player player = e.getPlayer();
 	    if(e.getHand()!=null)
 	    	if(e.getHand().equals(EquipmentSlot.OFF_HAND)) return;
 	    if(e.getAction() != Action.LEFT_CLICK_BLOCK) return;
@@ -224,14 +224,14 @@ public class ItemGod_of_pickaxe extends CustomItem{
 		boolean Mod2=false;
 		boolean Mod3=false;
 	    try {
-	    	Mod1=(p.getInventory().getItemInMainHand().getItemMeta().getLore().equals(Mod1_ItemMeta.getLore()));
-	    	Mod2=(p.getInventory().getItemInMainHand().getItemMeta().getLore().equals(Mod2_ItemMeta.getLore()));
-	    	Mod3=(p.getInventory().getItemInMainHand().getItemMeta().getLore().equals(Mod3_ItemMeta.getLore()));
+	    	Mod1=(player.getInventory().getItemInMainHand().getItemMeta().getLore().equals(Mod1_ItemMeta.getLore()));
+	    	Mod2=(player.getInventory().getItemInMainHand().getItemMeta().getLore().equals(Mod2_ItemMeta.getLore()));
+	    	Mod3=(player.getInventory().getItemInMainHand().getItemMeta().getLore().equals(Mod3_ItemMeta.getLore()));
 	    }catch(Exception ex){
 	    	return;
 	    }
 	    if(Mod1 || Mod2 || Mod3) {
-	    	blockface.put(p, e.getBlockFace());
+	    	blockface.put(player, e.getBlockFace());
 	    }
 	}
 

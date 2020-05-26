@@ -35,10 +35,10 @@ public class ItemHardener extends CustomItem{
 	
 	@EventHandler
 	public void drink(PlayerItemConsumeEvent e){
-		Player p=e.getPlayer();
+		Player player=e.getPlayer();
 		ItemStack item=e.getItem();
 		if(item.getItemMeta().equals(this.getItemMeta())) {
-			p.addPotionEffect(new PotionEffect(PotionEffectType.HARM, 1, 10));
+			player.addPotionEffect(new PotionEffect(PotionEffectType.HARM, 1, 10));
 			
 		}
 	}

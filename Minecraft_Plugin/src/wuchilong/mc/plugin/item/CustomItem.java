@@ -85,13 +85,13 @@ public class CustomItem extends ItemStack implements Listener{
 	@EventHandler
 	public void onBlockPlaceEvent(BlockPlaceEvent  e) {
 		if(!isBlock) return;
-		Player p = e.getPlayer();
+		Player player = e.getPlayer();
 	    if(e.getItemInHand().getItemMeta().equals(this.getItemMeta())) {
-	    	if(!p.getGameMode().equals(GameMode.CREATIVE)) {
-	    		if(p.getLocale().contentEquals("zh_tw"))
-	    			p.sendMessage(ChatColor.RED + "這個方塊不能放在地上！");
+	    	if(!player.getGameMode().equals(GameMode.CREATIVE)) {
+	    		if(player.getLocale().contentEquals("zh_tw"))
+	    			player.sendMessage(ChatColor.RED + "這個方塊不能放在地上！");
 	    		else
-	    			p.sendMessage(ChatColor.RED + "This block cannot be placed on the ground！");
+	    			player.sendMessage(ChatColor.RED + "This block cannot be placed on the ground！");
 	    		e.setCancelled(true);
 	    	}
 	    }

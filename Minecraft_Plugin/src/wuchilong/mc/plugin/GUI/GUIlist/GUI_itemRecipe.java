@@ -15,6 +15,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import wuchilong.mc.plugin.main;
+import wuchilong.mc.plugin.GUI.GUIController;
 import wuchilong.mc.plugin.item.CustomItem;
 
 
@@ -31,6 +32,10 @@ public class GUI_itemRecipe implements Listener {
 		exit.setDisplayName(ChatColor.BLUE + "返回道具列表");
 		EXITitem.setItemMeta(exit);
 		
+		ItemStack Returnitem=new ItemStack(Material.RED_STAINED_GLASS_PANE,(short) 1);
+		ItemMeta Return=EXITitem.getItemMeta();
+		Return.setDisplayName(ChatColor.BLUE + "返回主畫面");
+		Returnitem.setItemMeta(Return);
 		for(CustomItem item:main.PLUGIN.itemcontroller.itemList.values()) {//登入有合成表的
 			if(item.isRecipe) {
 				Inventory inventory=Bukkit.createInventory(null , 54 , item.getItemMeta().getDisplayName()+ChatColor.BLUE+"的合成表");
@@ -61,7 +66,7 @@ public class GUI_itemRecipe implements Listener {
 				itemList.put(getHash(item.getItemMeta()),inventory);
 			}
 		}
-		mainGUI=Bukkit.createInventory(null , 54 , ChatColor.BLUE+"特別道具列表");
+		mainGUI=Bukkit.createInventory(null , 54 , ChatColor.BLUE+"自定義道具列表");
 		
 		
 		mainGUI.setItem(0, main.PLUGIN.itemcontroller.itemList.get("excalibur_Strengthengold_ingot"));
@@ -75,7 +80,7 @@ public class GUI_itemRecipe implements Listener {
 		mainGUI.setItem(9, main.PLUGIN.itemcontroller.itemList.get("adventure_Hardener"));
 		mainGUI.setItem(10, main.PLUGIN.itemcontroller.itemList.get("adventure_Elytra"));
 		mainGUI.setItem(11, main.PLUGIN.itemcontroller.itemList.get("adventure_InfiniteFireworks"));
-		
+		mainGUI.setItem(45,Returnitem);
 	}
 	
 	@EventHandler
@@ -96,6 +101,8 @@ public class GUI_itemRecipe implements Listener {
 					if(!ismain) {
 						player.closeInventory();
 						player.openInventory(mainGUI);
+					}else {
+						GUIController.gui_main.opengui(player);
 					}
 				}
 				try {

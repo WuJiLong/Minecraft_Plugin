@@ -60,9 +60,9 @@ public class ItemController implements CommandExecutor, TabCompleter{
 		// TODO Auto-generated method stub
 		if(lable.equalsIgnoreCase("getitem")){
 			if(sender instanceof Player){//如果命令發送者是玩家
-				Player p = (Player) sender;//強制轉型成玩家
+				Player player = (Player) sender;//強制轉型成玩家
 				List<String> endlist= Lists.newArrayList();
-				if(p.hasPermission("Wu.item.command.getitem")){//是否有權限
+				if(player.hasPermission("Wu.item.command.getitem")){//是否有權限
 					List<String> list= Lists.newArrayList();
 					list.addAll(itemList.keySet());
 					if(args.length==1){
@@ -80,18 +80,18 @@ public class ItemController implements CommandExecutor, TabCompleter{
 	public boolean onCommand(CommandSender sender , Command cmd , String lable , String[] args) {
 		if(lable.equalsIgnoreCase("getitem")){
 			if(sender instanceof Player){//如果命令發送者是玩家
-				Player p = (Player) sender;//強制轉型成玩家
-				if(p.hasPermission("Wu.item.command.getitem")){//是否有權限
+				Player player = (Player) sender;//強制轉型成玩家
+				if(player.hasPermission("Wu.item.command.getitem")){//是否有權限
 					if(args.length==1){
 						if(itemList.get(args[0])!=null){
 							ItemStack i=itemList.get(args[0]);
-							p.getInventory().addItem(i);
+							player.getInventory().addItem(i);
 						}else{
-							p.sendMessage(ChatColor.RED + "[Item]找不到道具");
+							player.sendMessage(ChatColor.RED + "[Item]找不到道具");
 						}
 					}
 				}else{
-					p.sendMessage(ChatColor.RED + "[Item]沒有權限(Wu.item.command.getitem)");
+					player.sendMessage(ChatColor.RED + "[Item]沒有權限(Wu.item.command.getitem)");
 				}
 				return true;
 			

@@ -36,13 +36,13 @@ public class ItemInfiniteFireworks extends CustomItem{
 	
 	@EventHandler
 	public void fly(PlayerInteractEvent e){
-		Player p=e.getPlayer();
-		Block b=e.getClickedBlock();
+		Player player=e.getPlayer();
+		Block block=e.getClickedBlock();
 		ItemStack usingitem=e.getItem();
 		try {
-			if(p.getGameMode().equals(GameMode.CREATIVE)) return;
+			if(player.getGameMode().equals(GameMode.CREATIVE)) return;
 			 if(usingitem.getItemMeta().equals(this.getItemMeta())){
-					if(b!=null || !p.isGliding() || !e.getAction().equals(Action.RIGHT_CLICK_AIR)) { e.setCancelled(true); return;}
+					if(block!=null || !player.isGliding() || !e.getAction().equals(Action.RIGHT_CLICK_AIR)) { e.setCancelled(true); return;}
 					ItemStack item=usingitem;
 					int nur=item.getAmount()+1;
 					usingitem.setAmount(nur);

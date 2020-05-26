@@ -4,6 +4,10 @@ import java.util.Arrays;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.ItemStack;
 //import org.bukkit.entity.Player;
 //import org.bukkit.event.EventHandler;
 //import org.bukkit.event.block.Action;
@@ -11,6 +15,7 @@ import org.bukkit.Material;
 //import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import wuchilong.mc.plugin.GUI.GUIController;
 import wuchilong.mc.plugin.item.CustomItem;
 
 public class ItemIPad extends CustomItem{
@@ -30,15 +35,15 @@ public class ItemIPad extends CustomItem{
 		hasSkill=true;
 	}
 	
-	/*
 	@EventHandler
-	public void maketheitem(PlayerInteractEvent e){
-		 Player p = e.getPlayer();
-		 if(e.getHand()!=null)
-		    	if(e.getHand().equals(EquipmentSlot.OFF_HAND)) return;
-		 if(p.getInventory().getItemInMainHand()!=null)
-		 if(e.getAction() == Action.LEFT_CLICK_BLOCK && p.getInventory().getItemInMainHand().getItemMeta().getLore().equals(this.getItemMeta().getLore())) {
-	    	p.sendMessage(ChatColor.RED + "敲敲敲");
-	    }
-	}*/
+	public void fly(PlayerInteractEvent e){
+		Player player=e.getPlayer();
+		ItemStack usingitem=e.getItem();
+		try {
+			if(usingitem.getItemMeta().equals(this.getItemMeta())){
+				e.setCancelled(true);
+				GUIController.gui_main.opengui(player);
+			}
+	    }catch(Exception ex){}
+	}
 }

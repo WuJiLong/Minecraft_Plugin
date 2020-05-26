@@ -52,10 +52,10 @@ public class ItemGod_of_axe extends CustomItem{
 	
 	@EventHandler
 	public void onBlockBreakEvent (BlockBreakEvent  e) {
-		Player p = e.getPlayer();
+		Player player = e.getPlayer();
 	    boolean hold=false;
 	    try {
-	    	hold=p.getInventory().getItemInMainHand().getItemMeta().getLore().equals(this.getItemMeta().getLore());
+	    	hold=player.getInventory().getItemInMainHand().getItemMeta().getLore().equals(this.getItemMeta().getLore());
 	    }catch(Exception ex){
 	    	hold=false;
 	    }
