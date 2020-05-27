@@ -17,6 +17,7 @@ import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import wuchilong.mc.plugin.main;
 import wuchilong.mc.plugin.item.CustomItem;
 
 public class ItemGod_of_pickaxe extends CustomItem{
@@ -143,7 +144,7 @@ public class ItemGod_of_pickaxe extends CustomItem{
 					Material.STRUCTURE_BLOCK};
 	    	Material dirbolck=b.getState().getType();
 	    	
-	    	int dirsize=3;//size
+	    	int dirsize=main.PLUGIN.getConfig().getInt("customitem.excalibur.god_of_pickaxe.destroy_range", 3);//size
 	    	
 	    	for(int i=0;i<dirsize;i++) {
     			for(int j=0;j<dirsize;j++) {

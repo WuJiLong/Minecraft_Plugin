@@ -22,9 +22,10 @@ Gildedgrip 神器握把
 God_of_pickaxe 斷剛神稿  
 God_of_axe 斷剛神斧  
 ### Other
-I_pad 平板電腦
+I_pad 平板電腦  
   
 ##  目前功能：
+保護玩家 避免一次性受到大量傷害導致裝備耐久gg (src\wuchilong\mc\plugin\OtherListener.java)  
 GUI顯示道具列表以及合成表 (src\wuchilong\mc\plugin\GUI\GUIlist\GUI_itemRecipe.java)  
 自定義合成表  (src\wuchilong\mc\plugin\item\CustomItem.java)  
 一次挖掘 NxNxN範圍方塊  (src\wuchilong\mc\plugin\item\itemlist\Excalibur\ItemGod_of_pickaxe.java)  

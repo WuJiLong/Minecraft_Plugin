@@ -11,8 +11,11 @@ public class main extends JavaPlugin{
 	GUIController guicontroller=new GUIController();
 	public static main PLUGIN;
 	public void onEnable() {
-		getLogger().info("Loading the plugin...");
 		PLUGIN=this;
+		getLogger().info("Loading the plugin...");
+		getConfig().options().copyDefaults(true);
+		saveConfig();
+	    reloadConfig();
 		itemcontroller.onEnable();
 		guicontroller.onEnable();
 		getServer().getPluginManager().registerEvents(otherListener, this);
@@ -22,4 +25,5 @@ public class main extends JavaPlugin{
 		guicontroller.onDisable();
 		itemcontroller.onDisable();
 	}
+	
 }

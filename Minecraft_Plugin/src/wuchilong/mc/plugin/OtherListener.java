@@ -11,13 +11,13 @@ public class OtherListener implements Listener{
 	public void EntityDamageByEntityEvent(org.bukkit.event.entity.EntityDamageByEntityEvent e) {
 		Entity p = e.getDamager();
 		Entity p2 = e.getEntity();
-		if (p instanceof Player) {
-			if (p2 instanceof Player) {
-				if(e.getDamage()>=20){
-						e.setDamage(20);
-						main.PLUGIN.getLogger().info(p.getName()+"攻擊"+p2.getName()+"的傷害已抵銷!");
-				}
-		    }
-        }
+		
+		if (p2 instanceof Player) {
+			if(e.getDamage()>30){
+					e.setDamage(30);
+					main.PLUGIN.getLogger().info(p.getName()+"攻擊"+p2.getName()+"的傷害已抵銷!");
+			}
+	    }
+      
 	}
 }
