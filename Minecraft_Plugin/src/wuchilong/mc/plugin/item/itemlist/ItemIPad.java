@@ -30,6 +30,7 @@ public class ItemIPad extends CustomItem{
 				(ChatColor.MAGIC + "Hello, World!")
 		}));
 		item.setUnbreakable(true);
+		item.setLocalizedName("other."+this.itemname);
 		this.setItemMeta(item);
 		
 		hasSkill=true;
@@ -40,7 +41,7 @@ public class ItemIPad extends CustomItem{
 		Player player=e.getPlayer();
 		ItemStack usingitem=e.getItem();
 		try {
-			if(usingitem.getItemMeta().equals(this.getItemMeta())){
+			if(usingitem.getItemMeta().getLocalizedName().equals(this.getItemMeta().getLocalizedName())){
 				e.setCancelled(true);
 				GUIController.gui_main.opengui(player);
 			}

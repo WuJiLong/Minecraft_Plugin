@@ -23,6 +23,7 @@ public class ItemElytra extends CustomItem{
 				(ChatColor.WHITE + "基本上用不壞")
 		}));
 		item.setUnbreakable(true);
+		item.setLocalizedName("adventure."+this.itemname);
 		this.setItemMeta(item);
 		this.addUnsafeEnchantment(new EnchantmentWrapper("unbreaking"), 9487);//
 		

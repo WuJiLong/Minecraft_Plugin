@@ -20,6 +20,7 @@ public class ItemStrengthengold_ingot extends CustomItem{
 		item.setLore(Arrays.asList(new String[] {
 				(ChatColor.WHITE + "製作斷鋼系列神器最基本的材料")
 		}));
+		item.setLocalizedName("excalibur."+this.itemname);
 		this.setItemMeta(item);
 		this.addUnsafeEnchantment(new EnchantmentWrapper("sharpness"), 1);//16
 		

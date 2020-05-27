@@ -24,16 +24,16 @@ public class ItemGod_of_axe extends CustomItem{
 	public HashMap<Player, BlockFace> blockface=new HashMap<Player, BlockFace>();
 	public ItemGod_of_axe() {
 		super(Material.GOLDEN_AXE,(short) 1,"god_of_axe");
-		ItemMeta itemMeta = this.getItemMeta();
-		itemMeta.setDisplayName(ChatColor.GOLD + "斷鋼神斧");
-		itemMeta.setLore(Arrays.asList(new String[] {
+		ItemMeta item = this.getItemMeta();
+		item.setDisplayName(ChatColor.GOLD + "斷鋼神斧");
+		item.setLore(Arrays.asList(new String[] {
 				(ChatColor.WHITE + "非常OP的斧"),
 				(ChatColor.WHITE + "使用時請往樹根砍"),
 				(ChatColor.RED + "請勿副魔更名以免功能損壞")
 		}));
-		itemMeta.setUnbreakable(true);
-		
-		this.setItemMeta(itemMeta);
+		item.setUnbreakable(true);
+		item.setLocalizedName("excalibur."+this.itemname);
+		this.setItemMeta(item);
 		this.addUnsafeEnchantment(new EnchantmentWrapper("efficiency"), 1);//32
 		this.addUnsafeEnchantment(new EnchantmentWrapper("sharpness"), 500);//16
 		this.addUnsafeEnchantment(new EnchantmentWrapper("looting"), 3);//21
@@ -55,14 +55,14 @@ public class ItemGod_of_axe extends CustomItem{
 		Player player = e.getPlayer();
 	    boolean hold=false;
 	    try {
-	    	hold=player.getInventory().getItemInMainHand().getItemMeta().getLore().equals(this.getItemMeta().getLore());
+	    	hold=player.getInventory().getItemInMainHand().getItemMeta().getLocalizedName().equals(this.getItemMeta().getLocalizedName());
 	    }catch(Exception ex){
 	    	hold=false;
 	    }
 	    if(hold) {
 	    	e.setCancelled(true);
 	    	ItemStack tol=new ItemStack(Material.DIAMOND_AXE);
-	    	tol.addUnsafeEnchantment(new EnchantmentWrapper("silk_touch"), 5);
+	    	//tol.addUnsafeEnchantment(new EnchantmentWrapper("silk_touch"), 5);
 	    	Block b=e.getBlock();
 	    	//int x=(int) b.getLocation().getX();
 	    	//int y=(int) b.getLocation().getY();
@@ -82,6 +82,14 @@ public class ItemGod_of_axe extends CustomItem{
 					Material.OAK_LOG,
 					Material.SPRUCE_LOG
 					};
+	    	Material LeavesList[]= {
+					Material.ACACIA_LEAVES,
+					Material.BIRCH_LEAVES,
+					Material.DARK_OAK_LEAVES,
+					Material.JUNGLE_LEAVES,
+					Material.OAK_LEAVES,
+					Material.SPRUCE_LEAVES
+					};
 	    	Material dirbolck=b.getState().getType();
 	    	Material grass=b.getRelative(BlockFace.DOWN).getState().getType();
 	    	
@@ -92,8 +100,13 @@ public class ItemGod_of_axe extends CustomItem{
 	    	if(!canwork1) {e.setCancelled(false);return;}
 	    	
 	    	boolean canwork2=false;
-	    	for(Material i:LogList) {
-	    		if(i.equals(dirbolck)) {canwork2=true;break;}
+	    	Material leave=null;
+	    	for(int i=0;i<LogList.length;i++) {
+	    		if(LogList[i].equals(dirbolck)) {
+	    			canwork2=true;
+	    			leave=LeavesList[i];
+	    			break;
+	    			}
 	    	} 
 	    	if(!canwork2) {e.setCancelled(false);return;}
 	    	
@@ -116,6 +129,10 @@ public class ItemGod_of_axe extends CustomItem{
 		    					if(n.getBlock().getState().getType().equals(dirbolck)) {
 		    						next_round.add(n);
 		    					}
+		    					if(n.getBlock().getState().getType().equals(leave)) {
+		    						Block block=n.getBlock();
+		    			    		block.breakNaturally(tol);
+		    					}
 		    				}
 		    			}
 	    			}
@@ -123,7 +140,6 @@ public class ItemGod_of_axe extends CustomItem{
 	    		//p.sendMessage("X1 "+String.valueOf(round1.size()));
 	    		for(Location loc:round1) {
 	    			Block block=loc.getBlock();
-		    		
 		    		block.breakNaturally(tol);
 	    			//alldir.add(loc);
 	    		}

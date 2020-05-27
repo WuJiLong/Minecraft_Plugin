@@ -25,6 +25,7 @@ public class ItemExcalibur extends CustomItem{
 				(ChatColor.WHITE + "非常鋒利的劍"),(ChatColor.WHITE + "可以輕鬆切開任何肉體")
 		}));
 		item.setUnbreakable(true);
+		item.setLocalizedName("excalibur."+this.itemname);
 		this.setItemMeta(item);
 		this.addUnsafeEnchantment(new EnchantmentWrapper("sharpness"), 1000);//16
 		this.addUnsafeEnchantment(new EnchantmentWrapper("smite"), 1000);//17

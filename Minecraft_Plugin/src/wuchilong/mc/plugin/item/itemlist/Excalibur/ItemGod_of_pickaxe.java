@@ -63,7 +63,9 @@ public class ItemGod_of_pickaxe extends CustomItem{
 				(ChatColor.GREEN + "3.全數破壞")
 		}));
 		Mod3_ItemMeta.setUnbreakable(true);
-		
+		Mod1_ItemMeta.setLocalizedName("excalibur."+this.itemname+"1");
+		Mod2_ItemMeta.setLocalizedName("excalibur."+this.itemname+"2");
+		Mod3_ItemMeta.setLocalizedName("excalibur."+this.itemname+"3");
 		this.setItemMeta(Mod1_ItemMeta);
 		this.addUnsafeEnchantment(new EnchantmentWrapper("efficiency"), 10000);//32
 		isRecipe=true;
@@ -78,27 +80,35 @@ public class ItemGod_of_pickaxe extends CustomItem{
 		recipe[7]= itemList.get("excalibur_Gildedgrip");
 	}
 	
+	private int getMod(ItemStack item) {
+		String Lname=item.getItemMeta().getLocalizedName();
+		try {
+			if(Lname.contentEquals(Mod1_ItemMeta.getLocalizedName())) {
+				return 1;
+			}
+			if(Lname.contentEquals(Mod2_ItemMeta.getLocalizedName())) {
+				return 2;
+			}
+			if(Lname.contentEquals(Mod3_ItemMeta.getLocalizedName())) {
+				return 3;
+			}
+		}catch(Exception ex){
+	    }
+		return 0;
+	}
+	
 	@EventHandler
 	public void Switch_working_mode(PlayerInteractEvent e) {
 	    Player player = e.getPlayer();
 	    if(e.getHand()!=null)
 	    	if(e.getHand().equals(EquipmentSlot.OFF_HAND)) return;
 	    if(e.getAction() != Action.RIGHT_CLICK_BLOCK && e.getAction() != Action.RIGHT_CLICK_AIR) return;
-	    boolean Mod1=false;
-		boolean Mod2=false;
-		boolean Mod3=false;
-	    try {
-	    	Mod1=(player.getInventory().getItemInMainHand().getItemMeta().getLore().equals(Mod1_ItemMeta.getLore()));
-	    	Mod2=(player.getInventory().getItemInMainHand().getItemMeta().getLore().equals(Mod2_ItemMeta.getLore()));
-	    	Mod3=(player.getInventory().getItemInMainHand().getItemMeta().getLore().equals(Mod3_ItemMeta.getLore()));
-	    }catch(Exception ex){
-	    	return;
-	    }
-	    if(Mod1 || Mod2 || Mod3) {
-	    	if(Mod1) {
+	    int mod=getMod(player.getInventory().getItemInMainHand());
+	    if(mod!=0) {
+	    	if(mod==1) {
 	    		player.getInventory().getItemInMainHand().setItemMeta(Mod2_ItemMeta);
 	    		player.sendMessage(ChatColor.BLUE + "[斷鋼神稿]切換至功能:選擇性破壞(礦物)");
-	    	}else if(Mod2) {
+	    	}else if(mod==2) {
 	    		player.getInventory().getItemInMainHand().setItemMeta(Mod3_ItemMeta);
 	    		player.sendMessage(ChatColor.BLUE + "[斷鋼神稿]切換至功能:全數破壞");
 	    	}else { 
@@ -111,18 +121,10 @@ public class ItemGod_of_pickaxe extends CustomItem{
 	}
 	@EventHandler
 	public void onBlockBreakEvent (BlockBreakEvent  e) {
-		Player p = e.getPlayer();
-		boolean Mod1=false;
-		boolean Mod2=false;
-		boolean Mod3=false;
-	    try {
-	    	Mod1=(p.getInventory().getItemInMainHand().getItemMeta().getLore().equals(Mod1_ItemMeta.getLore()));
-	    	Mod2=(p.getInventory().getItemInMainHand().getItemMeta().getLore().equals(Mod2_ItemMeta.getLore()));
-	    	Mod3=(p.getInventory().getItemInMainHand().getItemMeta().getLore().equals(Mod3_ItemMeta.getLore()));
-	    }catch(Exception ex){
-	    	return;
-	    }
-	    if(Mod1 || Mod2 || Mod3) {
+		Player player = e.getPlayer();
+		int mod=getMod(player.getInventory().getItemInMainHand());
+	    
+	    if(mod!=0) {
 	    	e.setCancelled(true);
 	    	//tol.addUnsafeEnchantment(new EnchantmentWrapper("silk_touch"), 5);
 	    	Block b=e.getBlock();
@@ -150,7 +152,7 @@ public class ItemGod_of_pickaxe extends CustomItem{
     			for(int j=0;j<dirsize;j++) {
     				for(int k=0;k<dirsize;k++){
     					int ax,ay,az;
-    					switch(blockface.get(p)){
+    					switch(blockface.get(player)){
     			    	case DOWN:
     			    		ax=x-(dirsize/2)+i;ay=y+j;az=z-(dirsize/2)+k;break;
     			    	case UP:
@@ -166,7 +168,7 @@ public class ItemGod_of_pickaxe extends CustomItem{
     					default:
     						ax=x;ay=y;az=z;break;
     					}
-    					Block bb=p.getWorld().getBlockAt(ax, ay, az);
+    					Block bb=player.getWorld().getBlockAt(ax, ay, az);
     					
     					//maby create a "ClaimedResidence" in here
     					
@@ -175,10 +177,10 @@ public class ItemGod_of_pickaxe extends CustomItem{
 							if(bb.getState().getType().equals(mate)) candir=false;
 						}
 						if(!candir) continue;
-						if(Mod1) {
+						if(mod==1) {
 							if(bb.getState().getType().equals(dirbolck))
 	    						bb.breakNaturally(tol);
-						}else if(Mod2) {
+						}else if(mod==2) {
 							Material ORE[]= {
 									Material.COAL_ORE,
 									Material.IRON_ORE,
@@ -205,8 +207,6 @@ public class ItemGod_of_pickaxe extends CustomItem{
 						}else {
 							bb.breakNaturally(tol);
 						}
-    					
-    					
     				}
     			}
     		}//for i
@@ -221,17 +221,7 @@ public class ItemGod_of_pickaxe extends CustomItem{
 	    if(e.getHand()!=null)
 	    	if(e.getHand().equals(EquipmentSlot.OFF_HAND)) return;
 	    if(e.getAction() != Action.LEFT_CLICK_BLOCK) return;
-	    boolean Mod1=false;
-		boolean Mod2=false;
-		boolean Mod3=false;
-	    try {
-	    	Mod1=(player.getInventory().getItemInMainHand().getItemMeta().getLore().equals(Mod1_ItemMeta.getLore()));
-	    	Mod2=(player.getInventory().getItemInMainHand().getItemMeta().getLore().equals(Mod2_ItemMeta.getLore()));
-	    	Mod3=(player.getInventory().getItemInMainHand().getItemMeta().getLore().equals(Mod3_ItemMeta.getLore()));
-	    }catch(Exception ex){
-	    	return;
-	    }
-	    if(Mod1 || Mod2 || Mod3) {
+	    if(getMod(player.getInventory().getItemInMainHand())!=0) {
 	    	blockface.put(player, e.getBlockFace());
 	    }
 	}

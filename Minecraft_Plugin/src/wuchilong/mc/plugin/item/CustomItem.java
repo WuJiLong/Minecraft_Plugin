@@ -86,7 +86,7 @@ public class CustomItem extends ItemStack implements Listener{
 	public void onBlockPlaceEvent(BlockPlaceEvent  e) {
 		if(!isBlock) return;
 		Player player = e.getPlayer();
-	    if(e.getItemInHand().getItemMeta().equals(this.getItemMeta())) {
+	    if(e.getItemInHand().getItemMeta().getLocalizedName().equals(this.getItemMeta().getLocalizedName())) {
 	    	if(!player.getGameMode().equals(GameMode.CREATIVE)) {
 	    		if(player.getLocale().contentEquals("zh_tw"))
 	    			player.sendMessage(ChatColor.RED + "這個方塊不能放在地上！");

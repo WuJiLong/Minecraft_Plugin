@@ -28,6 +28,7 @@ public class ItemInfiniteFireworks extends CustomItem{
 				(ChatColor.WHITE + "但這好像沒有燃料填充口。")
 		}));
 		//item.setUnbreakable(true);
+		item.setLocalizedName("adventure."+this.itemname);
 		this.setItemMeta(item);
 		this.addUnsafeEnchantment(new EnchantmentWrapper("infinity"), 10);//51
 		hasSkill=true;
@@ -41,7 +42,7 @@ public class ItemInfiniteFireworks extends CustomItem{
 		ItemStack usingitem=e.getItem();
 		try {
 			if(player.getGameMode().equals(GameMode.CREATIVE)) return;
-			 if(usingitem.getItemMeta().equals(this.getItemMeta())){
+			 if(usingitem.getItemMeta().getLocalizedName().equals(this.getItemMeta().getLocalizedName())){
 					if(block!=null || !player.isGliding() || !e.getAction().equals(Action.RIGHT_CLICK_AIR)) { e.setCancelled(true); return;}
 					ItemStack item=usingitem;
 					int nur=item.getAmount()+1;
@@ -53,10 +54,9 @@ public class ItemInfiniteFireworks extends CustomItem{
 	
 	@EventHandler
 	public void dispense(BlockDispenseEvent e) {
-		
 		ItemStack usingitem=e.getItem();
 		try {
-			 if(usingitem.getItemMeta().equals(this.getItemMeta())){
+			 if(usingitem.getItemMeta().getLocalizedName().equals(this.getItemMeta().getLocalizedName())){
 				if(e.getBlock().getState().getType().equals(Material.DISPENSER))
 					e.setCancelled(true);
 			}

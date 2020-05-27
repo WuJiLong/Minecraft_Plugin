@@ -26,20 +26,18 @@ public class ItemHardener extends CustomItem{
 				(ChatColor.RED + "警告：不可食用！"),
 		}));
 		//item.setUnbreakable(true);
+		item.setLocalizedName("adventure."+this.itemname);
 		this.setItemMeta(item);
 		//this.addUnsafeEnchantment(new EnchantmentWrapper("infinity"), 10);//51
 		hasSkill=true;
 	}
 	
-	
-	
 	@EventHandler
 	public void drink(PlayerItemConsumeEvent e){
 		Player player=e.getPlayer();
 		ItemStack item=e.getItem();
-		if(item.getItemMeta().equals(this.getItemMeta())) {
+		if(item.getItemMeta().getLocalizedName().equals(this.getItemMeta().getLocalizedName())) {
 			player.addPotionEffect(new PotionEffect(PotionEffectType.HARM, 1, 10));
-			
 		}
 	}
 }
