@@ -34,6 +34,7 @@ public class ItemController implements CommandExecutor, TabCompleter{
 		itemList.put("adventure_InfiniteFireworks", new ItemInfiniteFireworks());//
 		itemList.put("adventure_Hardener", new ItemHardener());//
 		itemList.put("adventure_Elytra", new ItemElytra());//
+		itemList.put("adventure_InfiniteTorch", new ItemInfiniteTorch());//
 		
 		itemList.put("excalibur_Excalibur", new ItemExcalibur());//斷鋼聖劍
 		itemList.put("excalibur_Strengthengold_ingot", new ItemStrengthengold_ingot());//強化金錠

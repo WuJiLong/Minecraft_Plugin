@@ -1,6 +1,6 @@
 package wuchilong.mc.plugin.GUI.GUIlist;
 
-import java.security.MessageDigest;
+//import java.security.MessageDigest;
 import java.util.HashMap;
 
 import org.bukkit.Bukkit;
@@ -63,7 +63,7 @@ public class GUI_itemRecipe implements Listener {
 						inventory.setItem(index[i], item.recipe[i]);
 					}
 				}
-				itemList.put(getHash(item.getItemMeta()),inventory);
+				itemList.put(item.getItemMeta().getLocalizedName()/*getHash(item.getItemMeta())*/,inventory);
 			}
 		}
 		mainGUI=Bukkit.createInventory(null , 54 , ChatColor.BLUE+"自定義道具列表");
@@ -106,7 +106,7 @@ public class GUI_itemRecipe implements Listener {
 					}
 				}
 				try {
-					String index=getHash(e.getCurrentItem().getItemMeta());
+					String index=e.getCurrentItem().getItemMeta().getLocalizedName();//getHash(e.getCurrentItem().getItemMeta());
 					if(itemList.get(index)!=null) {
 						player.closeInventory();
 						player.openInventory(itemList.get(index));
@@ -127,6 +127,7 @@ public class GUI_itemRecipe implements Listener {
 		player.closeInventory();
 		player.openInventory(mainGUI);
 	}
+	/*
 	private String getHash(ItemMeta item) {
 		byte[] bytes = item.toString().getBytes();
 		byte[] digest;
@@ -149,5 +150,5 @@ public class GUI_itemRecipe implements Listener {
             }
         }
 		return sb.toString().toUpperCase();
-	}
+	}*/
 }

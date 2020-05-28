@@ -81,8 +81,8 @@ public class ItemGod_of_pickaxe extends CustomItem{
 	}
 	
 	private int getMod(ItemStack item) {
-		String Lname=item.getItemMeta().getLocalizedName();
 		try {
+			String Lname=item.getItemMeta().getLocalizedName();
 			if(Lname.contentEquals(Mod1_ItemMeta.getLocalizedName())) {
 				return 1;
 			}
