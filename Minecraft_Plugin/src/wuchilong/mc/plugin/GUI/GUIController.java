@@ -15,6 +15,7 @@ public class GUIController implements CommandExecutor{
 	public static GUI_itemRecipe gui_itemRecipe=new GUI_itemRecipe();
 	public static GUI_main gui_main=new GUI_main();
 	public void onEnable() {
+		main.PLUGIN.getLogger().info("Loading GUIList");
 		gui_itemRecipe.init();
 		main.PLUGIN.getServer().getPluginManager().registerEvents(gui_itemRecipe, main.PLUGIN);
 		gui_main.init();

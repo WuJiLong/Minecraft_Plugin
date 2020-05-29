@@ -28,8 +28,7 @@ public class ItemGod_of_axe extends CustomItem{
 		item.setDisplayName(ChatColor.GOLD + "斷鋼神斧");
 		item.setLore(Arrays.asList(new String[] {
 				(ChatColor.WHITE + "非常OP的斧"),
-				(ChatColor.WHITE + "使用時請往樹根砍"),
-				(ChatColor.RED + "請勿副魔更名以免功能損壞")
+				(ChatColor.WHITE + "使用時請往樹根砍")
 		}));
 		item.setUnbreakable(true);
 		item.setLocalizedName("excalibur."+this.itemname);
@@ -61,7 +60,7 @@ public class ItemGod_of_axe extends CustomItem{
 	    }
 	    if(hold) {
 	    	e.setCancelled(true);
-	    	ItemStack tol=new ItemStack(Material.DIAMOND_AXE);
+	    	ItemStack tol=player.getInventory().getItemInMainHand();
 	    	//tol.addUnsafeEnchantment(new EnchantmentWrapper("silk_touch"), 5);
 	    	Block b=e.getBlock();
 	    	//int x=(int) b.getLocation().getX();
